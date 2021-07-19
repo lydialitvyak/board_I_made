@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Thread title</th>
+      <th>look this thread</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.thread_title %></td>
+        <td><%= link_to 'Show', test_path(thread_title: post.thread_title) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

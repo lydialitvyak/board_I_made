@@ -1,0 +1,32 @@
+<% @threads.each do |t| %>
+
+	<div class="card">
+		
+		<div class="card-body">
+
+			<%= t.created_at %>
+			<br>
+			
+			<%= t.content %>
+			<br>
+		</div>
+	</div>
+
+<% end %>
+
+<br>
+
+
+<%= form_with  model: @post do |f|%>
+	ここにスレタイ(これを固定できるようにしたい)
+	<br>
+	
+	<%= f.text_field :thread_title, value: @thread_title %>
+	<br>
+	
+	ここに書き込みの内容
+	<br>
+	
+	<%= f.text_field :content %>
+	<%= f.submit '書き込み'%>
+<% end %>
