@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! 
 
   # GET /posts or /posts.json
   #
@@ -7,12 +8,24 @@ class PostsController < ApplicationController
 	  @posts = Post.select(:thread_title).distinct
   end
 
-  def post
+  def post1
 	  @post = Post.new(post_params1)
 	  @post.save
 	  redirect_to request.referer
 
   end
+
+
+  def post2
+	  @post = Post.new(post_params1)
+	  @post.save
+	  redirect_to action: 'index'
+
+  end
+
+
+
+
 
   def search
 	  @posts = Post.search(params[:keyword])
@@ -71,6 +84,7 @@ class PostsController < ApplicationController
   end
 
   def test
+	  @user = User.where(email: current_user.email)
 	  @threads = Post.where(thread_title: params[:thread_title])
 	  @thread_title = params[:thread_title] 
   end
@@ -87,7 +101,7 @@ class PostsController < ApplicationController
     end
 
 	def post_params1
-		params.permit(:thread_title, :content)
+		params.permit(:thread_title, :content, :email)
 	end
 
 

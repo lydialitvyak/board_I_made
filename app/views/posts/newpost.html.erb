@@ -1,0 +1,22 @@
+<%= form_with model: @post do |f| %>
+	email
+	<br>
+	<%= f.text_field :email, value: current_user.email%>
+	<br>
+	
+	
+	thread_title
+	<br>
+	
+	<%= f.text_field :thread_title%>
+	<br>
+	content	
+	<br>
+	
+	
+	<%= f.text_area :content%>
+	<br>
+	
+
+	<%= f.submit %>
+<% end %>

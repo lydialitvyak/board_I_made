@@ -18,10 +18,19 @@
       </li>
     </ul>
     <form class="serch-form">
-		<%= form_with url: search_path, method: :get, local: true do |f| %>
-			<%= f.text_field :keyword, value: @keyword %>
-			<%= f.submit "検索" %>
-		<% end %>
     </form>
+	<% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
+		<!-- ユーザーがログインしていた時の処理 -->
+
+		<h5> メールアドレス： <%= current_user.email %> </h5>
+		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
+	<% else %>
+		<!-- ユーザーがログインしていなかった時の処理 -->
+		<h5> 現在ログインしていません </h5>
+		<%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+		<%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+	<% end %>
+
+
   </div>
 </nav>
