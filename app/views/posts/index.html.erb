@@ -1,6 +1,8 @@
+<%= javascript_pack_tag 'movingshow' %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1 class="">Posts</h1>
 
 <table class="table">
   <thead class="thead-dark">
@@ -11,11 +13,11 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="">
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.thread_title %></td>
-        <td><%= link_to 'Show', test_path(thread_title: post.thread_title) %></td>
+        <td class=""><%= post.thread_title %></td>
+        <td class="hoge"><%= link_to 'Show', test_path(thread_title: post.thread_title) %></td>
       </tr>
     <% end %>
   </tbody>

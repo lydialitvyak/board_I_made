@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   #
   def index
 	  @posts = Post.select(:thread_title).distinct
+	  @posts = @posts.where('content LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def post1
@@ -25,12 +26,9 @@ class PostsController < ApplicationController
 
 
 
-
-
   def search
-	  @posts = Post.search(params[:keyword])
-	  @keyword = params[:keyword]
-	  render "index"
+	  @post = Post.all
+	  @result = Post.search(params[:search])
   end
 
   # GET /posts/1 or /posts/1.json

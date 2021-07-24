@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get 'users/destroy'
   get 'users/update'
   get 'posts/newpost'
+  get 'posts/search'
   root to: 'posts#index'
   devise_for :users
   resources :posts
   get '/test' => 'posts#test'
   post '/test' => 'posts#post1' 
   post '/posts/newpost' => 'posts#post2'
-  get 'search' => 'posts#search'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

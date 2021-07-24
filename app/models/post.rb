@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
-	def self.search(keyword)
-		where(["thread_title like?", "%#{keyword}%"])
+	def self.search(search)
+		if search
+			Post.where(['content LIKE ?', "%#{search}%"])
+		else
+			Post.all
+		end
 	end
 end
